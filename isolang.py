@@ -4,7 +4,7 @@ import os, argparse, datetime, time, json
 jsonfile = 'language-codes-full.json'
 
 appname = 'isolang'
-appversion = '1.1.0  13-9-2016'
+appversion = '1.2.0  13-9-2016'
 appdesc = 'Transforms ISO Language Codes JSON file'
 appusage = 'Help:  py ' + appname + '.py -h \n'
 appauthor = 'Filip Kriz (@filak)'
@@ -78,13 +78,13 @@ def procFile(sourcefile, tpath, codes):
         if subset:
             if o['alpha3-b'] in subset or o['alpha3-t'] in subset:
                 if o['alpha2']:
-                    code_dict['codes'].append(getNodes(o))
+                    code_dict['codes'].append(getCodes(o))
         else:
             if o['alpha2']:
-                code_dict['codes'].append(getNodes(o))
+                code_dict['codes'].append(getCodes(o))
 
 
-    code_dict = getCustomNodes(code_dict)
+    code_dict = getCustomCodes(code_dict)
     writeXml(code_dict, tpath, fname)
     writeJson(code_dict, tpath, fname)
 
@@ -123,7 +123,7 @@ def writeJson(code_dict, tpath, fname):
         ft.write(json.dumps(code_dict))
 
 
-def getNodes(o):
+def getCodes(o):
     lang = o['English']
     a2 = o['alpha2']
     a3b = o['alpha3-b']
@@ -142,7 +142,7 @@ def getNodes(o):
     return node
 
 
-def getCustomNodes(code_dict):
+def getCustomCodes(code_dict):
 
     node = {}
     node['a2'] = ''
@@ -163,11 +163,11 @@ def getCustomNodes(code_dict):
     code_dict['codes'].append(node)
 
     node = {}
-    node['a2'] = 'de'
-    node['a3b'] = 'ger_frak'
-    node['a3t'] = 'deu'
-    node['a3h'] = 'deu_frak'
-    node['lang'] = 'German fracture'
+    node['a2'] = 'da'
+    node['a3b'] = 'dan_frak'
+    node['a3t'] = 'dan'
+    node['a3h'] = 'dan_frak'
+    node['lang'] = 'Danish fracture'
 
     code_dict['codes'].append(node)
 
