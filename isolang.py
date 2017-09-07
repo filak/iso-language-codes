@@ -1,15 +1,14 @@
 # coding: utf-8
 import os, argparse, datetime, time, json
 
-jsonfile = 'language-codes-full.json'
-
 appname = 'isolang'
-appversion = '1.2.0  13-9-2016'
-appdesc = 'Transforms ISO Language Codes JSON file'
+appversion = '1.2.1'
+appdesc = 'Transforms the ISO Language Codes JSON file'
 appusage = 'Help:  py ' + appname + '.py -h \n'
 appauthor = 'Filip Kriz (@filak)'
 applicense = 'MIT License (MIT)'
 
+jsonfile = 'language-codes-full.json'
 sourcepath = '_download'
 targetpath = '_output'
 defcodes = 'all'
@@ -65,7 +64,7 @@ def procFile(sourcefile, tpath, codes):
         subset = None
         fname = 'codes_lookup'
     else:
-        codes = codes.replace(' ','')
+        codes = codes.strip()
         subset = codes.split(',')
         fname = 'codes_lookup_sub'
 
@@ -170,7 +169,6 @@ def getCustomCodes(code_dict):
     node['lang'] = 'Danish fracture'
 
     code_dict['codes'].append(node)
-
 
     node = {}
     node['a2'] = 'sk'
