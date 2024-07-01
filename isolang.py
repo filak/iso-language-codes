@@ -38,7 +38,7 @@ def main():
     args, unknown = parser.parse_known_args()
 
     if unknown:
-        print('ERROR : Uknown arguments : ', unknown)
+        print('ERROR : Unknown arguments : ', unknown)
         print('Try help : py ' + appname  + '.py -h')
     else:
         spath = os.path.normpath(args.sourcedir)
