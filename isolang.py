@@ -38,7 +38,7 @@ def main():
     args, unknown = parser.parse_known_args()
 
     if unknown:
-        print('ERROR : Uknown arguments : ', unknown)
+        print('ERROR : Unknown arguments : ', unknown)
         print('Try help : py ' + appname  + '.py -h')
     else:
         spath = os.path.normpath(args.sourcedir)
@@ -53,7 +53,7 @@ def main():
 
 def procFile(sourcefile, tpath, codes):
 
-    t0 = time.clock()
+    t0 = time.process_time()
     startTime = datetime.datetime.strftime(datetime.datetime.now(), '%Y-%m-%d %H:%M:%S')
     print('\nStarted : ', startTime, '\n')
     print('Source file : ', sourcefile)
@@ -89,7 +89,7 @@ def procFile(sourcefile, tpath, codes):
 
     endTime = datetime.datetime.strftime(datetime.datetime.now(), '%Y-%m-%d %H:%M:%S')
     print('\nFinished : ', startTime, '\n')
-    et = ('Elapsed time : ' + str((time.clock() - t0) / 60) + ' min\n')
+    et = ('Elapsed time : ' + str((time.process_time() - t0) / 60) + ' min\n')
     print(et)
 
 
